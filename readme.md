@@ -4,7 +4,7 @@ A categorized list of Git commands with explanations.
 
 ---
 
-## 🔹 1. Setup & Configuration
+## 1. Setup & Configuration
 
 Configure Git on your machine.
 
