@@ -13,11 +13,11 @@ git --version
 ```
 
 ```bash
-git config --global user.name ""  # Set your name
+git config --global user.name "Your Name"  # Set your name
 ```
 
 ```bash
-git config --global user.email "" # Set your email
+git config --global user.email "you@example.com" # Set your email
 ```
 
 ```bash
