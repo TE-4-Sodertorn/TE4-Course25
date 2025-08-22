@@ -84,7 +84,7 @@ git checkout <commit> -- <file> # Restore file from commit
 ```bash
   git log # Show commit history
   git log --oneline # Compact history
-  git log --graph --oneline --all# Visualize history
+  git log --graph --oneline --all # Visualize history
   git show <commit> # Show commit details
   git blame <file> # Show who changed each line
 ```
