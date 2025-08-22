@@ -12,3 +12,11 @@
 - `git branch`: List branches
 - `git checkout <branch>`: Switch to a branch
 - `git merge <branch>`: Merge a branch into the current branch
+- `git branch -d <branch>`: Delete a branch locally
+- `git push <remote> <branch>`: Push a branch to a remote repository
+- `git switch -c <branch>`: Create and switch to a new branch
+
+1- create a new branch named html-intro
+2- switch to the new branch
+3-copy the folder starter template
+4- make some changes in the files. ADD, COMMIT and Push to github.
