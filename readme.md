@@ -141,6 +141,10 @@ git push -u origin <branch> # Push branch & set upstream
 ```
 
 ```bash
+git push --delete <remote> <branch> # Delete a remote branch
+```
+
+```bash
 git push # Push changes
 ```
 
