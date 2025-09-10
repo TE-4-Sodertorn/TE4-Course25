@@ -4,10 +4,15 @@
   box-sizing: border-box;
 }
 
+:root {
+  --bg: #f4f4f4;
+  --text: #333;
+}
+
 body {
   font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  color: #333;
+  background-color: var(--bg);
+  color: var(--text);
   line-height: 1.6;
   padding: 20px;
 }
@@ -18,4 +23,11 @@ h1 {
 
 p {
   text-align: center;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0b0f14;
+    --text: #e9eef3;
+  }
 }
