@@ -2,27 +2,22 @@ console.log("Hello, World!");
 
 let a = 10;
 let b = 14;
+let c = 16;
 
-console.log(a + b);
-console.log(a - b);
-console.log(a * b);
-console.log(a / b);
-console.log(a % b);
-console.log(a ** b);
+console.log(a + c);
+console.log(c / c);
+console.log(c * c);
+console.log(c - c);
 
-console.log(5 !== 5);
-console.log(5 >= 4);
-console.log(5 <= 4);
+const result = a + b + c;
+console.log(result > 50 && result < 100);
 
-console.log(!a > !b || a + 5 > b);
+const score = 50;
 
-const age = 18;
-const hasTicket = false;
-
-if (age >= 18 && hasTicket) {
-  console.log("Please come in and enjoy the show");
-} else if (age >= 18 && !hasTicket) {
-  console.log("Go buy a ticket");
+if (score >= 90) {
+  console.log("A");
+} else if (score >= 80 && score <= 89) {
+  console.log("B");
 } else {
-  console.log("Go home");
+  console.log("C");
 }
