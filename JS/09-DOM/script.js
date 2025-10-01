@@ -21,16 +21,8 @@ heading1.textContent = welcomeMessage;
 headingRole.textContent = welcomeRole;
 aboutText.textContent = ` Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae quia eum dolores ${myObj.name} dolore quos consectetur aliquam consequatur ${myObj.city} autem illum earum!`;
 
-for (const item in myObj) {
-  skillsList.appendChild(skillItem);
-  skillItem.textContent = skill;
-
-  if (item === "skillS") {
-    for (const sk of myObj.skillS) {
-      const skillItem = document.createElement("li");
-      skillItem.textContent = sk;
-      skillsList.append(skillItem);
-    }
-  } else {
-  }
+for (const item of myObj.skillS) {
+  const li = document.createElement("li");
+  li.textContent = item;
+  skillsList.appendChild(li);
 }
