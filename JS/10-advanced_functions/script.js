@@ -14,7 +14,7 @@ const sum = (...numArray) => {
 console.log(sum(2, 4, 7, 8, 20, 5578));
 
 const names = ["Lana", "Marc", "Antony", "Phillip"];
-const newNames = [...names, "Frank", "Manhal", "Erik"];
+const newNames = [...names, "Frank", "Manhal", "Erik", "Mohamad"];
 
 console.log("names", names);
 console.log("new names", newNames);
