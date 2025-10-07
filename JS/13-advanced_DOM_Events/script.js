@@ -76,6 +76,42 @@ const photos = [
     alt: "City skyline",
     caption: "City Lights",
   },
+  {
+    src: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1200",
+    thumb: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=300",
+    alt: "City skyline",
+    caption: "City Lights",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1200",
+    thumb: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=300",
+    alt: "City skyline",
+    caption: "City Lights",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1200",
+    thumb: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=300",
+    alt: "City skyline",
+    caption: "City Lights",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1200",
+    thumb: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=300",
+    alt: "City skyline",
+    caption: "City Lights",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1200",
+    thumb: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=300",
+    alt: "City skyline",
+    caption: "City Lights",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1200",
+    thumb: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=300",
+    alt: "City skyline",
+    caption: "City Lights",
+  },
 ];
 
 const thumbsEL = document.querySelector("#thumbs");
@@ -106,3 +142,79 @@ const renderThumbs = (items) => {
 };
 
 renderThumbs(photos);
+
+// Helpers
+const setMain = (index) => {
+  const { src, alt, caption } = photos[index];
+  mainImage.src = src;
+  mainImage.alt = alt;
+  captionEL.textContent = caption || alt;
+
+  thumbsEL.querySelectorAll("li").forEach((li) => li.classList.remove("active"));
+  const activeLi = thumbsEL.children[index];
+
+  if (activeLi) activeLi.classList.add("active");
+
+  mainImage.dataset.activeIndex = String(index);
+};
+setMain(0);
+
+const clammpIndex = (i) => {
+  return (i + photos.length) % photos.length;
+};
+
+// Delegate thumbs
+thumbsEL.addEventListener("click", (e) => {
+  const img = e.target.closest("img");
+  if (!img) return;
+  setMain(Number(img.dataset.index));
+});
+
+thumbsEL.addEventListener("keydown", (e) => {
+  if (e.key === "Enter" || e.key === " ") {
+    const img = e.target.closest("img");
+    if (img) setMain(Number(img.dataset.index));
+  }
+});
+// keyboard Navigation
+document.addEventListener("keydown", (e) => {
+  if (lightbox.open) return;
+  if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
+    const current = Number(mainImage.dataset.activeIndex || 0);
+    const next = e.key === "ArrowRight" ? clammpIndex(current + 1) : clammpIndex(current - 1);
+    setMain(next);
+    const activeThumb = thumbsEL.querySelector(`img[data-index="${next}"]`);
+    if (activeThumb) activeThumb.focus();
+  }
+});
+
+// Lightbox - modal
+mainImage.addEventListener("click", () => {
+  lightboxImage.src = mainImage.src;
+  lightboxImage.alt = mainImage.alt;
+  lightboxCaption.textContent = captionEL.textContent;
+  lightbox.showModal();
+});
+
+closeLightBox.addEventListener("click", () => {
+  lightbox.close();
+});
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && lightbox.open) lightbox.close();
+});
+
+lightbox.addEventListener("click", (e) => {
+  const clickedOutside = [lightboxImage, lightboxCaption, closeLightBox].includes(e.target);
+
+  if (!clickedOutside) lightbox.close();
+});
+
+// back to top button
+window.addEventListener("scroll", () => {
+  topBtn.style.display = window.scrollY > 100 ? "block" : "none";
+});
+
+topBtn.addEventListener("click", () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
