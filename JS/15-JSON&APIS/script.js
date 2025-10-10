@@ -4,6 +4,7 @@ console.log("Hello, World!");
 const postsList = document.getElementById("posts");
 const errorMessage = document.getElementById("error-message");
 errorMessage.style.color = "red";
+
 // async operations
 const fetchPosts = async () => {
   try {
