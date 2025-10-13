@@ -44,7 +44,6 @@ media.addEventListener("change", () => {
 });
 
 // > Gallery code
-
 const photos = [
   {
     src: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1200",
