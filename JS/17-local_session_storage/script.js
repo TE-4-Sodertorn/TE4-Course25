@@ -49,12 +49,90 @@ window.addEventListener("load", () => {
   if (savedValue) input.value = savedValue;
 });
 
-// * 9. MULTI TAB THEME SYNC AND INPUT SYNC
+// * 9 TODO List
+/**
+ * Add tasks -> Save to localStorage
+ * On Reload -> Load tasks from localStorage
+ * Allow delete and clear all.
+ */
+
+// * 9.1. CREATE TODO ELEMENTS
+const todoInput = document.createElement("input");
+const addTodoButton = document.createElement("button");
+const clearTodosButton = document.createElement("button");
+const todoList = document.createElement("ul");
+
+// * 9.2. ATTACH TODO ELEMENTS TO PAGE
+document.body.append(todoInput, addTodoButton, clearTodosButton, todoList);
+
+// * 9.3. INITIAL TODO UI SETUP
+todoInput.type = "text";
+todoInput.placeholder = "Enter a task";
+addTodoButton.innerText = "Add Task";
+clearTodosButton.innerText = "Clear All Tasks";
+
+// * 9.4. LOAD TODOS FROM localStorage ON RELOAD
+window.addEventListener("load", () => {
+  const todos = JSON.parse(localStorage.getItem("todos")) || [];
+  todos.forEach((task) => {
+    const li = document.createElement("li");
+    li.textContent = task;
+    todoList.appendChild(li);
+  });
+});
+
+// * 9.5. ADD TASK FUNCTIONALITY
+addTodoButton.addEventListener("click", () => {
+  const task = todoInput.value.trim();
+  if (task) {
+    const li = document.createElement("li");
+    li.textContent = task;
+    todoList.appendChild(li);
+
+    // Save to localStorage
+    const todos = JSON.parse(localStorage.getItem("todos")) || [];
+    todos.push(task);
+    localStorage.setItem("todos", JSON.stringify(todos));
+
+    todoInput.value = "";
+  }
+});
+
+// * 9.6. CLEAR ALL TASKS FUNCTIONALITY
+clearTodosButton.addEventListener("click", () => {
+  localStorage.removeItem("todos");
+  todoList.innerHTML = "";
+});
+
+// * 9.7. DELETE INDIVIDUAL TASKS FUNCTIONALITY
+todoList.addEventListener("click", (e) => {
+  if (e.target.tagName === "LI") {
+    const taskToDelete = e.target.textContent;
+    e.target.remove();
+
+    // Update localStorage
+    let todos = JSON.parse(localStorage.getItem("todos")) || [];
+    todos = todos.filter((task) => task !== taskToDelete);
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }
+});
+
+// * 10. MULTI TAB THEME SYNC AND INPUT SYNC
 window.addEventListener("storage", (e) => {
   if (e.key === "theme") {
     document.body.className = e.newValue;
   }
   if (e.key === "autosave") {
     input.value = e.newValue;
+  }
+
+  if (e.key === "todos") {
+    const todos = JSON.parse(e.newValue) || [];
+    todoList.innerHTML = "";
+    todos.forEach((task) => {
+      const li = document.createElement("li");
+      li.textContent = task;
+      todoList.appendChild(li);
+    });
   }
 });
