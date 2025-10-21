@@ -1,46 +1,50 @@
 console.log("Hello World!");
 
-const username = "Frank";
-localStorage.setItem("name", username);
+// 1. SAVE USERNAME (just an example)
+localStorage.setItem("name", "Frank");
 
+// 2. CREATE ELEMENTS
 const clearButton = document.createElement("button");
 const themeToggle = document.createElement("button");
 const para = document.createElement("p");
-document.body.appendChild(clearButton);
-document.body.appendChild(para);
-document.body.appendChild(themeToggle);
+const input = document.createElement("input");
 
-themeToggle.innerText = "Toggle Dark/Light Theme";
-themeToggle.addEventListener("click", () => {
-  const isDark = document.body.classList.toggle("dark");
-  localStorage.setItem("theme", isDark ? "dark" : "light");
-});
+// 3. ATTACH THEM TO PAGE
+document.body.append(clearButton, para, themeToggle, input);
 
+// 4. INITIAL UI SETUP
 clearButton.innerText = "Clear localStorage";
+themeToggle.innerText = "Toggle Dark/Light Theme";
+para.textContent = localStorage.getItem("name");
+input.type = "text";
+input.placeholder = "Type something to auto-save";
+input.value = localStorage.getItem("autosave") || "";
+
+// 5. THEME TOGGLE (localStorage remembers theme)
+themeToggle.addEventListener("click", () => {
+  const currentTheme = localStorage.getItem("theme");
+
+  // If current theme is dark → switch to light, else → switch to dark
+  const newTheme = currentTheme === "dark" ? "light" : "dark";
+
+  // override body class and save to localStorage
+  document.body.className = newTheme;
+  localStorage.setItem("theme", newTheme);
+});
+// 6. CLEAR EVERYTHING
 clearButton.addEventListener("click", () => {
   localStorage.clear();
   para.textContent = "";
   input.value = "";
 });
 
-para.textContent = localStorage.getItem("name");
-
-// form auto-save
-const input = document.createElement("input");
-document.body.appendChild(input);
-input.type = "text";
-input.placeholder = "Type something to auto-save";
-
-input.value = localStorage.getItem("autosave") || "";
-
+// 7. AUTO-SAVE TEXT INPUT
 input.addEventListener("input", () => {
   localStorage.setItem("autosave", input.value);
 });
 
-// apply the auto-saved value on page load
+// 8. APPLY AUTO-SAVED VALUE ON RELOAD
 window.addEventListener("load", () => {
   const savedValue = localStorage.getItem("autosave");
-  if (savedValue) {
-    input.value = savedValue;
-  }
+  if (savedValue) input.value = savedValue;
 });
