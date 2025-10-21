@@ -48,3 +48,13 @@ window.addEventListener("load", () => {
   const savedValue = localStorage.getItem("autosave");
   if (savedValue) input.value = savedValue;
 });
+
+// 9. MULTI TAB THEME SYNC AND INPUT SYNC
+window.addEventListener("storage", (e) => {
+  if (e.key === "theme") {
+    document.body.className = e.newValue;
+  }
+  if (e.key === "autosave") {
+    input.value = e.newValue;
+  }
+});
