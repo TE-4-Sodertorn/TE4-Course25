@@ -19,7 +19,7 @@ const LikeButtonComponent = () => {
         I like this!!!
       </label>
 
-      <p>You {liked ? "liked this" : "did not like this"}</p>
+      <p>You {liked ? "liked this ❤️" : "did not like this 💔"}</p>
     </div>
   );
 };

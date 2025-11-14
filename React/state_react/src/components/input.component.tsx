@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 
 const MyInput = () => {
-  const [text, setText] = useState<string>("Initialstate");
+  const initialState = "Heeellllooo";
+  const [text, setText] = useState<string>(initialState);
   console.log(text);
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -17,7 +18,7 @@ const MyInput = () => {
         onChange={handleChange}
       />
       <p>You type: {text}</p>
-      <button onClick={() => setText("Initialstate")}>RESET</button>
+      <button onClick={() => setText(initialState)}>RESET</button>
     </div>
   );
 };
