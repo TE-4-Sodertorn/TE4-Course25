@@ -1,16 +1,27 @@
-import AgeCounterComponent from "./components/age.counter.component";
-import ContactFormComponent from "./components/contact.form.component";
-import Counter from "./components/counter.component";
-import MyInput from "./components/input.component";
-import LikeButtonComponent from "./components/like.button.component";
-import ListComponent from "./components/list.component";
+import FavouriteMovies from "./components/exercises/exercise_array";
+import ToggleTheme from "./components/exercises/exercise_boolean";
+import MirrorInput from "./components/exercises/exercise_input";
+import MyCounter from "./components/exercises/exercise_number";
+import ProfileCard from "./components/exercises/exercise_object";
+import Greeting from "./components/exercises/exercise_string";
 
 function App() {
   return (
     <div className="">
       <h1>State in React</h1>
       <hr />
-      <Counter />
+      <Greeting />
+      <hr />
+      <MirrorInput />
+      <hr />
+      <MyCounter />
+      <hr />
+      <ToggleTheme />
+      <hr />
+      <ProfileCard />
+      <hr />
+      <FavouriteMovies />
+      {/* <Counter />
       <hr />
       <MyInput />
       <hr />
@@ -20,7 +31,7 @@ function App() {
       <hr />
       <ContactFormComponent />
       <hr />
-      <ListComponent />
+      <ListComponent /> */}
     </div>
   );
 }
