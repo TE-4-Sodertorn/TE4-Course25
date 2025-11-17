@@ -1,15 +1,10 @@
-import FavouriteMovies from "./components/exercises/exercise_array";
-import ToggleTheme from "./components/exercises/exercise_boolean";
-import MirrorInput from "./components/exercises/exercise_input";
-import MyCounter from "./components/exercises/exercise_number";
-import ProfileCard from "./components/exercises/exercise_object";
-import Greeting from "./components/exercises/exercise_string";
+import Counter from "./components/counter.component";
 
 function App() {
   return (
     <div className="">
       <h1>State in React</h1>
-      <hr />
+      {/* <hr />
       <Greeting />
       <hr />
       <MirrorInput />
@@ -20,8 +15,9 @@ function App() {
       <hr />
       <ProfileCard />
       <hr />
-      <FavouriteMovies />
-      {/* <Counter />
+      <FavouriteMovies /> */}
+      <Counter />
+      {/*
       <hr />
       <MyInput />
       <hr />
